@@ -1,0 +1,40 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{listings} % Permet d'inclure ton code C automatiquement
+\usepackage{xcolor}   % Pour colorer le code
+
+% Configuration des couleurs pour le code C
+\definecolor{commentColor}{rgb}{0,0.6,0}
+\definecolor{keywordColor}{rgb}{0,0,1}
+\definecolor{stringColor}{rgb}{0.58,0,0.82}
+
+\lstset{
+    commentstyle=\color{commentColor},
+    keywordstyle=\color{keywordColor},
+    stringstyle=\color{stringColor},
+    basicstyle=\footnotesize\ttfamily,
+    breaklines=true,
+    numbers=left,
+    numbersep=5pt,
+    language=C
+}
+
+\begin{document}
+
+\title{Projet ASD : Structures de Données Hybrides}
+\author{Seydina Mouhamed Diop \& [Nom de ton binôme]}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+Ce projet consiste à concevoir, implémenter et évaluer comparativement cinq structures de données.
+
+\section{Modélisation et Structures de Données}
+Voici la structure de base que nous avons conçue pour notre domaine applicatif.
+
+% Cette ligne va chercher ton code C sans faire de copier-coller
+% Le "../" permet de sortir du dossier Rapport pour aller dans le dossier Code
+\lstinputlisting{../Code/structure.h}
+
+\end{document}
