@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.6)  8 JUN 2026 23:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.6)  8 JUN 2026 23:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -180,33 +180,23 @@ LaTeX Info: Redefining \degres on input line 23.
 \makeMPintoPDFobject=\count307
 \everyMPtoPDFconversion=\toks23
 )
-Overfull \hbox (32.65414pt too wide) in paragraph at lines 26--32
-[]\OT1/cmr/m/n/12 <<<<<<< HEAD  =======  >>>>>>> f2060cc1d69ccb05c363836b02de760fc66a70b3
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 26--32
-
- []
-
-[1
-
-{C:/Users/USER/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 32.
+(Font)              <14.4> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 32.
- (../structure.h) (../structure.h [2])
-Overfull \hbox (1.22148pt too wide) in paragraph at lines 57--62
+(Font)              <7> on input line 28.
+ (../structure.h) (../structure.h [1
+
+{C:/Users/USER/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}])
+Overfull \hbox (1.22148pt too wide) in paragraph at lines 53--58
 []\OT1/cmr/m/n/12 La struc-ture \OT1/cmtt/m/n/12 Etudiant \OT1/cmr/m/n/12 re-groupe l'en-semble des in-for-ma-tions d'un ^^Setudiant
  []
 
 (../structure.h)
-Overfull \hbox (10.42407pt too wide) in paragraph at lines 66--70
+Overfull \hbox (10.42407pt too wide) in paragraph at lines 62--66
 \OT1/cmr/m/n/12 d'etu-diants. Dans la struc-ture \OT1/cmtt/m/n/12 Filiere \OT1/cmr/m/n/12 on a deux poin-teurs : \OT1/cmtt/m/n/12 premier[]du[]liste
  []
 
-[3] (rapport.aux)
+[2] (rapport.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -221,9 +211,9 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  43i,6n,62p,295b,1671s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on rapport.pdf (3 pages, 84948 bytes).
+Output written on rapport.pdf (2 pages, 82943 bytes).
 PDF statistics:
- 42 PDF objects out of 1000 (max. 8388607)
+ 39 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
