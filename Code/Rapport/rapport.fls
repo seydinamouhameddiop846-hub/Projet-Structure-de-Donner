@@ -65,6 +65,8 @@ OUTPUT rapport.aux
 INPUT C:\Users\USER\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\USER\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\USER\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
+OUTPUT rapport.pdf
+INPUT C:\Users\USER\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
 INPUT C:\Users\USER\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr17.tfm
 INPUT C:\Users\USER\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
 INPUT C:\Users\USER\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
@@ -80,8 +82,6 @@ INPUT C:\Users\USER\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt12.tfm
 INPUT ..\structure.h
 INPUT ..\structure.h
 INPUT ..\structure.h
-OUTPUT rapport.pdf
-INPUT C:\Users\USER\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
 INPUT ..\structure.h
 INPUT ..\structure.h
 INPUT ..\structure.h
