@@ -53,3 +53,11 @@ dkms.conf
 
 # debug information files
 *.dwo
+Code/Rapport/rapport2.aux
+Code/Rapport/rapport2.fdb_latexmk
+Code/Rapport/rapport2.log
+.gitignore
+Code/Rapport/rapport2.fls
+.gitignore
+Code/Rapport/rapport2.synctex.gz
+Code/Rapport/rapport2.pdf

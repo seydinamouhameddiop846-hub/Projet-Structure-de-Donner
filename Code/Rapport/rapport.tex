@@ -23,18 +23,50 @@
 \begin{document}
 
 \title{Projet ASD : Structures de Données Hybrides}
-\author{Seydina Mouhamed Diop \& [Nom de ton binôme]}
+\author{Seydina Mohamed Diop \& Abdou Lahate}
 \date{\today}
 \maketitle
 
 \section{Introduction}
-Ce projet consiste à concevoir, implémenter et évaluer comparativement cinq structures de données.
+Ce Projet porte sur un systeme de gestion de scolarité .
+En efet on va consevoire une programme qui va permetre a un utulisateur de rensegne
+quelque information qui saffichera sur le terminal 
 
 \section{Modélisation et Structures de Données}
-Voici la structure de base que nous avons conçue pour notre domaine applicatif.
+Voici les Structures de base que nous avons conçue pour notre domaine applicatif.
 
-% Cette ligne va chercher ton code C sans faire de copier-coller
-% Le "../" permet de sortir du dossier Rapport pour aller dans le dossier Code
-\lstinputlisting{../Code/structure.h}
+% 1. On affiche uniquement la structure Note (lignes 4 à 10 par exemple)
+\lstinputlisting[linerange=4-10]{../structure.h}
+
+% 2. Tu écris ton explication de la structure Note juste ici
+\subsubsection{Explication de la structure Note}
+La structure \texttt{Note} reçoit et stocke les resultats academiques d'un etudiant
+pour chaque matière de la filiere, ainsi que le coefficient correspondant. 
+Par exemple, pour un étudiant donné, cette structure va enregistrer ses notes au fur et à mesure. 
+Ensuite, grace au pointeur \texttt{struct Note *note\_suivante}, la structure se connecte à la note
+suivante du même étudiant.C'est ce mécanisme qui forme une liste chaînée de notes propre à chaque etudiant, 
+permettant de stocker un nombre dynamique de modules sans utiliser de tableau statique.
+
+\lstinputlisting[linerange=12-20]{../structure.h}
+
+\subsubsection{Explication de la structure Etudiant}
+La structure \texttt{Etudiant} regroupe l'ensemble des informations d'un étudiant de la filière, telles que son nom, son 
+prénom, son numéro de dossier (identifiant unique) et son état d'inscription (via un booleen).
+Le pointeur \texttt{modules}  est essentielle : il pointe vers la première note de l'etudiant, liant ainsi l'etudiant 
+à ses résultats.Concernant le pointeur \texttt{etudiant\_suivant} elle pointe sur l etudiant suivante creent ainsi 
+une liste chaine
+
+\lstinputlisting[linerange=21-27]{../structure.h}
+
+\subsubsection{Explication de la structure Filiere}
+Cette structure contient le nom d'une filiere donner ainsi que le nombre d'etudiants.
+Dans la structure \texttt{Filiere} on a deux pointeurs : \texttt{premier\_du\_liste} qui pointe sur le premier étudiant 
+de la liste du filière, \texttt{dernier\_du\_liste} quant a lui pointe sur le dernier étudiant. Permettant d inserer des
+etudiants directemant a la fin de la liste 
+
+
+
+
+
 
 \end{document}
