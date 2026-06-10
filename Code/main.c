@@ -4,6 +4,5 @@
 
 int main()
 {
-    Note 
     return 0;
 }

@@ -14,7 +14,7 @@ typedef struct Etudiant
     char nom[30];
     char prenom[40];
     int numero_dossier; // identifiant unique par etudiant 
-    bool eta_inscription; // 1 si l etudiant c est inscrit et 0 sinon
+    bool eta_inscription; // 1 si l etudiant s'est inscrit et 0 sinon (initialise lors de la creation)
     Note *modules; // est un pointeur de type Note 
     struct Etudiant *etudiant_suivant; // permet de passer a l etudiant suivant
 }Etudiant;
