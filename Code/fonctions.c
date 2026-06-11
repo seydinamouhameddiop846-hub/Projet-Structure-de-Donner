@@ -61,13 +61,26 @@ void bultin_etudiant(Etudiant *etudiant) // une fonction permetant d enregistrer
     printf("\n--------Resultats Academique--------\n");
     printf("Donner la matiere : \n");
     scanf("%s", nouveau_note->matier);
-    printf("Donner la note obtenue : \n");
-    scanf("%f", &nouveau_note->valeur);
-    printf("Donner le coeficient du matiere : \n");
-    scanf("%d", &nouveau_note->coef);
-
+    do
+    {
+        printf("Donner la note obtenue : \n");
+        scanf("%f", &nouveau_note->valeur);
+        if (nouveau_note->valeur < 0 || nouveau_note->valeur > 20) 
+        {
+            printf("Erreur ! La note doit etre comprise entre 0 et 20.\n");
+        }
+    } while (nouveau_note->valeur < 0 || nouveau_note->valeur > 20);
+    do
+    {
+        printf("Donner le coeficient du matiere : \n");
+        scanf("%d", &nouveau_note->coef);
+        if (nouveau_note->coef <= 0 || nouveau_note->coef > 10) 
+        {
+            printf("Erreur ! Le coefficient doit etre compris entre 1 et 10.\n");
+        }
+    } while (nouveau_note->coef <= 0 || nouveau_note->coef > 10);
+    
     nouveau_note->note_suivante = NULL; // c est la premiere et dernier note 
-
 
     if (etudiant->modules == NULL)
     {
@@ -114,33 +127,57 @@ void bulletin(Filiere *filiere)
     }
 
     printf("\n--------Bulletin des etudiants de la classe--------\n");
+    
+    // VARIABLES AJOUTÉES POUR LA MOYENNE GÉNÉRALE (Ligne 1 et 2)
+    float somme_des_moyennes_classe = 0;
+    int compteur_etudiants_avec_notes = 0; // prend en compt que les etudiants ayant une moyenne 
+
     Etudiant *actuel_liste_info = filiere->premier_du_liste;
-    if (actuel_liste_info->eta_inscription == 1)
+    
+    while (actuel_liste_info != NULL)
     {
-        while (actuel_liste_info != NULL)
+        // On vérifie le statut de chaque étudiant individuellement ici
+        if (actuel_liste_info->eta_inscription == 1)
         {
-            printf("Nom: %s, Prenom: %s, Numero de dossier: %d\n",actuel_liste_info->nom, actuel_liste_info->prenom, actuel_liste_info->numero_dossier);
+            printf("Nom: %s, Prenom: %s, Numero de dossier: %d\n", actuel_liste_info->nom, actuel_liste_info->prenom, actuel_liste_info->numero_dossier);
             Note *actuel_liste_bulletin = actuel_liste_info->modules;
-            float moyenne;
             float point_totale = 0;
             int coef_totale = 0;
+            
             while (actuel_liste_bulletin != NULL)
             {
-                printf("Matiere: %s, Note: %f, Coeficiant: %d\n",actuel_liste_bulletin->matier, actuel_liste_bulletin->valeur, actuel_liste_bulletin->coef);
-                point_totale += actuel_liste_bulletin->valeur*actuel_liste_bulletin->coef;
+                printf("Matiere: %s, Note: %f, Coeficiant: %d\n", actuel_liste_bulletin->matier, actuel_liste_bulletin->valeur, actuel_liste_bulletin->coef);
+                point_totale += actuel_liste_bulletin->valeur * actuel_liste_bulletin->coef;
                 coef_totale += actuel_liste_bulletin->coef;
                 actuel_liste_bulletin = actuel_liste_bulletin->note_suivante;
             }
-            actuel_liste_info = actuel_liste_info->etudiant_suivant;
+            
             if (coef_totale != 0)
             {
-                 moyenne = point_totale/coef_totale;
-                printf("Moyenne Generale: %.2f\n",moyenne);
+                actuel_liste_info->moyenne_general = point_totale / coef_totale;
+                printf("Moyenne Generale: %.2f\n\n", actuel_liste_info->moyenne_general);
+                somme_des_moyennes_classe += actuel_liste_info->moyenne_general;
+                compteur_etudiants_avec_notes++;
             }
             else
-            printf("Aucune note enregistre\n");
+            {
+                actuel_liste_info->moyenne_general = 0;
+                printf("Aucune note enregistre\n");
+            }
         }
+        // On passe à l'étudiant suivant 
+        actuel_liste_info = actuel_liste_info->etudiant_suivant;
+    }
 
+    // Affichage de la moyenne gennerale 
+    if (compteur_etudiants_avec_notes > 0)
+    {
+        float moyenne_general_classe = somme_des_moyennes_classe / compteur_etudiants_avec_notes;
+        printf("MOYENNE GENERALE DE LA FILIERE : %.2f / 20\n", moyenne_general_classe);
+    }
+    else
+    {
+        printf("Moyenne generale de la filiere : Impossible (aucune note saisie).\n");
     }
 }
 // fonction pour rechercher un etudiant
@@ -252,5 +289,171 @@ void suprimer_etudiant(Filiere *filiere)
     free(actuel_etudiant); // liber l espace allouher a l etudiant suprimer
     filiere->nb_etudiants--;
     printf("L etudiant avec l id :%d a ete supprimer avec succe\n", id_supprimer);
+}
+// fonction pour trouver le majorant de la filiere
+void maximum(Filiere *filiere)
+{
+    if (filiere == NULL || filiere->premier_du_liste == NULL)
+    {
+        printf("Il n y a aucune etudiant ");
+        return;
+    }
+    float majorant = 0.0;
+    Etudiant *etudiant_major = filiere->premier_du_liste;
+    Etudiant *le_major = NULL; // Pointeur pour mémoriser le majorant
+    while (etudiant_major != NULL)
+    {
+        if (etudiant_major->eta_inscription == 1 && etudiant_major->moyenne_general >= 0.0)
+        {
+            if (etudiant_major->moyenne_general > majorant)
+            {
+                majorant = etudiant_major->moyenne_general; // mise a jour du nouveaux majorant
+                le_major = etudiant_major; // memorise l enplacement du majorant actuelle
+            }
+        }
+        etudiant_major = etudiant_major->etudiant_suivant;
+    }
+    if (le_major != NULL)
+    {
+        printf("Le majorant de la filiere :%s, est %s, %s, numero de dossier : %d, et a une moyenne generale de :%.2f\n",filiere->nom_filiere, le_major->prenom, le_major->nom, le_major->numero_dossier, le_major->moyenne_general);
+    }
+}
+// fonction pour trouver le minorant 
+void minimum(Filiere *filiere)
+{
+    if (filiere == NULL || filiere->premier_du_liste == NULL)
+    {
+        printf("Il n y a aucune etudiant ");
+        return;
+    }
+    float minorant = 20;
+    Etudiant *etudiant_minor = filiere->premier_du_liste;
+    Etudiant *le_minor = NULL; // Pointeur pour mémoriser le minorant
+    while (etudiant_minor != NULL)
+    {
+        if (etudiant_minor->eta_inscription == 1 && etudiant_minor->moyenne_general >= 0.0)
+        {
+            if (etudiant_minor->moyenne_general < minorant)
+            {
+                minorant = etudiant_minor->moyenne_general; // mise a jour du nouveaux minorant
+                le_minor = etudiant_minor; // memorise l enplacement du minorant actuelle
+            }
+        }
+        etudiant_minor = etudiant_minor->etudiant_suivant;
+    }
+    if (le_minor != NULL)
+    {
+        printf("L etudiant ayant la plus faible note de la filiere :%s, est %s, %s, numero de dossier : %d, et a une moyenne generale de :%.2f\n",filiere->nom_filiere, le_minor->prenom, le_minor->nom, le_minor->numero_dossier, le_minor->moyenne_general);
+    }
+}
+// tri par ordre de merite (tri par selection)
+void du_majorant_minorant(Filiere *filiere)
+{
+    if (filiere == NULL || filiere->premier_du_liste == NULL)
+    {
+        printf("Il n y a aucune etudiant ");
+        return;
+    }
+    Etudiant *i = filiere->premier_du_liste;
+    Etudiant *j;
+    Etudiant *major_minor = NULL; // Pointeur pour mémoriser le i
+    // il nous faut des variable et une pointeur pour les echange fineaux
+    char tmp_nom[50];
+    char tmp_prenom[50];
+    int tmp_id;
+    int tmp_etat_inscription;
+    float tmp_moyenne_general;
+    Note *tmp_modules;
+    while (i != NULL && i->etudiant_suivant != NULL)
+    {
+        major_minor = i; // on suppose que le plus grant est le i
+        j = i->etudiant_suivant;
+        while (j != NULL)
+        {
+            if (j->moyenne_general > major_minor->moyenne_general)
+            {
+                major_minor = j; // j devient temporairement le plus grand
+            }
+            j = j->etudiant_suivant; // j passe a l etudiant suivant
+        }
+        if (major_minor != i)
+        {
+            strcpy(tmp_nom, i->nom);
+            strcpy(tmp_prenom, i->prenom);
+            tmp_id = i->numero_dossier;
+            tmp_etat_inscription = i->eta_inscription;
+            tmp_moyenne_general = i->moyenne_general;
+            tmp_modules = i->modules;
+
+            strcpy(i->nom, major_minor->nom);
+            strcpy(i->prenom, major_minor->prenom);
+            i->numero_dossier = major_minor->numero_dossier;
+            i->eta_inscription = major_minor->eta_inscription;
+            i->moyenne_general = major_minor->moyenne_general;
+            i->modules = major_minor->modules;
+
+            strcpy(major_minor->nom, tmp_nom);
+            strcpy(major_minor->prenom, tmp_prenom);
+            major_minor->numero_dossier = tmp_id;
+            major_minor->eta_inscription = tmp_etat_inscription;
+            major_minor->moyenne_general = tmp_moyenne_general;
+            major_minor->modules = tmp_modules;
+        }
+        i = i->etudiant_suivant;
+    }    
+}    
+// tri par ordre alphabetique (tri a bulle)
+void orde_alphabet(Filiere *filiere)
+{
+    if (filiere == NULL || filiere->premier_du_liste == NULL)
+    {
+        printf("Il n y a aucune etudiant \n");
+        return;
+    }
+
+    Etudiant *i = filiere->premier_du_liste;
+    Etudiant *j;
+
+    char tmp_nom[50];
+    char tmp_prenom[50];
+    int tmp_id;
+    int tmp_etat_inscription;
+    float tmp_moyenne_general;
+    Note *tmp_modules;
+
+    while (i != NULL && i->etudiant_suivant != NULL)
+    {
+        j = i->etudiant_suivant;
+        
+        while (j != NULL)
+        {
+            if (strcmp(i->nom, j->nom) > 0)
+            {
+                strcpy(tmp_nom, i->nom);
+                strcpy(tmp_prenom, i->prenom);
+                tmp_id = i->numero_dossier;
+                tmp_etat_inscription = i->eta_inscription;
+                tmp_moyenne_general = i->moyenne_general;
+                tmp_modules = i->modules;
+
+                strcpy(i->nom, j->nom);
+                strcpy(i->prenom, j->prenom);
+                i->numero_dossier = j->numero_dossier;
+                i->eta_inscription = j->eta_inscription;
+                i->moyenne_general = j->moyenne_general;
+                i->modules = j->modules;
+
+                strcpy(j->nom, tmp_nom);
+                strcpy(j->prenom, tmp_prenom);
+                j->numero_dossier = tmp_id;
+                j->eta_inscription = tmp_etat_inscription;
+                j->moyenne_general = tmp_moyenne_general;
+                j->modules = tmp_modules;
+            }
+            j = j->etudiant_suivant; // j avance
+        }
+        
+        i = i->etudiant_suivant; // i avance
+    }
 }
 
