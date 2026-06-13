@@ -29,8 +29,10 @@
 
 \section{Introduction}
 Ce Projet porte sur un systeme de gestion de scolarité .
-En efet on va consevoire une programme qui va permetre a un utulisateur de rensegne
-quelque information qui saffichera sur le terminal 
+En efet on va consevoire une programme qui va permetre a un utilisateur d enregistrer autant d etudiant qu il souhaite accompagner de
+leur information personnel et pedagogique .Ainsi une serie de message vont s afficher sur le terminal permettant a l utilisateur
+d echanger avec la machine .Ce dernier fera des series de calcule lier au \texttt{Structures et Fonctions} ci dessous et affichera les 
+information correspondant.
 
 \section{Modélisation des Structures de Données}
 Voici les Structures de base que nous avons conçue pour notre \texttt{Systeme De Scolarité}.
@@ -47,7 +49,7 @@ Ensuite, grace au pointeur \texttt{struct Note *note\_suivante}, la structure se
 suivante du même étudiant.C'est ce mécanisme qui forme une liste chaînée de notes propre à chaque etudiant, 
 permettant de stocker un nombre dynamique de modules sans utiliser de tableau statique.
 
-\lstinputlisting[linerange=12-20]{../structure.h}
+\lstinputlisting[linerange=12-21]{../structure.h}
 
 \subsubsection{Explication de la structure Etudiant}
 La structure \texttt{Etudiant} regroupe l'ensemble des informations d'un étudiant de la filière, telles que son nom, son 
@@ -56,7 +58,7 @@ Le pointeur \texttt{modules}  est essentielle : il pointe vers la première note
 à ses résultats.Concernant le pointeur \texttt{etudiant\_suivant} elle pointe sur l etudiant suivante creent ainsi 
 une liste chaine
 
-\lstinputlisting[linerange=21-27]{../structure.h}
+\lstinputlisting[linerange=22-28]{../structure.h}
 
 \subsubsection{Explication de la structure Filiere}
 Cette structure contient le nom d'une filiere donner ainsi que le nombre d'etudiants.
