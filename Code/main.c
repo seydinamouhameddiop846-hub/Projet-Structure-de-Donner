@@ -14,6 +14,8 @@ int main()
     ma_filiere.nb_etudiants = 0;
     
     printf("======== BIENVENUE! =======\n");
+    printf("Veuillez donner le nom de votre filiere:\n");
+    scanf("%s", ma_filiere.nom_filiere);
     while (votre_choix1 != 0)
     {
         nouveau_etudiant = inscrire_etudiants(&ma_filiere);
@@ -29,14 +31,15 @@ int main()
     liste_de_la_classe(&ma_filiere);
     bulletin(&ma_filiere);
     recherche_et_modification_etudiant(&ma_filiere);
-    suprimer_etudiant(ma_filiere);
+    suprimer_etudiant(&ma_filiere);
     maximum(&ma_filiere);
     minimum(&ma_filiere);
     du_majorant_minorant(&ma_filiere);
+    printf("-------- Classe triee par ordre de merite du meillieure au moins bon -------\n");
+    liste_de_la_classe(&ma_filiere);
     orde_alphabet(&ma_filiere);
-
-
-
+    printf("-------- Classe triee par ordre alphabetique --------\n");
+    liste_de_la_classe(&ma_filiere);
 
     return 0;
 }

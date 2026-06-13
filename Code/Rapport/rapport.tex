@@ -32,8 +32,8 @@ Ce Projet porte sur un systeme de gestion de scolarité .
 En efet on va consevoire une programme qui va permetre a un utulisateur de rensegne
 quelque information qui saffichera sur le terminal 
 
-\section{Modélisation et Structures de Données}
-Voici les Structures de base que nous avons conçue pour notre domaine applicatif.
+\section{Modélisation des Structures de Données}
+Voici les Structures de base que nous avons conçue pour notre \texttt{Systeme De Scolarité}.
 
 % 1. On affiche uniquement la structure Note (lignes 4 à 10 par exemple)
 \lstinputlisting[linerange=4-10]{../structure.h}
@@ -63,6 +63,151 @@ Cette structure contient le nom d'une filiere donner ainsi que le nombre d'etudi
 Dans la structure \texttt{Filiere} on a deux pointeurs : \texttt{premier\_du\_liste} qui pointe sur le premier étudiant 
 de la liste du filière, \texttt{dernier\_du\_liste} quant a lui pointe sur le dernier étudiant. Permettant d inserer des
 etudiants directemant a la fin de la liste 
+
+\section{Modélisation des Fonctions}
+Voici les fonctions que nous avons conçue pour permetre le bon fonctionement de notre Systeme de scolarité.
+
+\lstinputlisting[linerange=8-44]{../fonctions.c}
+
+\subsubsection{Explication de la Fonctions inscrire\_etudiant}
+Cette fonction nous permet d ajouter de nouveaux etudiant dans une filiere en enregitrant leur information personnel: prenon, non,numero de dossier  
+grace a l allocation dynamique suivant:\texttt{Etudiant *nouveau\_etudiant = (Etudiant*) malloc(sizeof(Etudiant))} qui allout une espace memoire dans le memoire RAM.
+Combiner au boucle suivant.
+\lstinputlisting[linerange=30-39]{../fonctions.c}
+l utulisateur poura ajouter autant d etudiant qu il souhaite, le programme aura ainsi le nombre totale d etudiants.
+
+
+
+\lstinputlisting[linerange=45-111]{../fonctions.c}
+
+\subsubsection{Explication de la Fonctions note\_etudiant}
+Comme la fonction precedente celui ci Permet de stocke les resultats scolaire de chaque etudiants enregistrer en amont ,grace a l allocation dynamique suivant
+\texttt{ Note *nouveau\_note = (Note*)malloc(sizeof(Note))}.CEtte fonction va permetre a l utilisateur de donner autant de matiere ainsi que les note et coefficient associer.
+Pour chacune des etudiants qu il enregistre il peux aussi ne pas ajouter de note pour les etudiants qu il souhaite . Et cela grace au boucle \texttt{ while (nouveaux\_matiere == 2)}
+qui lui dira de taper 2 s il veux ajouter des matiere et 0 sinon .
+
+
+
+
+
+\lstinputlisting[linerange=113-128]{../fonctions.c}
+
+\subsubsection{Explication de la Fonctions liste\_de\_la\_classe}
+Quant a cette fonction il affichera la liste des etudiants que l utulisateur a deja enregistrer .Il donne respectivement leur nom, prenom et numero de dossier.
+
+
+
+
+
+
+\lstinputlisting[linerange=130-191]{../fonctions.c}
+
+\subsubsection{Explication de la Fonctions bulletin}
+La fonction \texttt{bulletin} permet de calculer les moyenne de chaque etudiant ainsique la moyenne gennerale de la classe.
+Elle va aller chercher les module de chaque etudiants c est a dire ces matiere ainsi que les coef et notes associer pour calculer sa moyenne.
+Si l etudiant n a pas de note la boucle :
+\lstinputlisting[linerange=171-175]{../fonctions.c}
+Va afficher a l ecrant que cette etudiant n a pas de note ,cette etudiant ne sera pas prise en compte pour le calcule du moyenne gennerale de la classe .
+Grace au variable \texttt{etudiants\_avec\_notes} , innicialise a 0 qui n avance que si l etudiant qu on doit calculer la moyenne a une note .De cette facon avec 
+la boucle :
+\lstinputlisting[linerange=182-191]{../fonctions.c}
+Cqlcule et affiche la moyenne gennerale exacte de la classe.
+
+
+
+
+
+
+\lstinputlisting[linerange=193-274]{../fonctions.c}
+
+\subsubsection{Explication de la Fonctions recherche\_et\_modification\_etudiant}
+Cette fonction va demander a l utilisateur s il veut rechercher un etudiant affin de modifier 
+ou non ces information personnel ou academiques en l affichant un message lui permettantde faire deux choix
+soit taper 3 pour contunuer et avoire la possibiliter de modifiers certainne information .Soit taper 0 pour arreter le programme.
+et eventuellement ne rien modifier ou sortire apres des modification.
+
+
+
+
+
+
+
+\lstinputlisting[linerange=276-335]{../fonctions.c}
+
+\subsubsection{Explication de la Fonctions suprimer\_etudiant}
+De la meme manier que la fonction precedente celui ci lui permetra de suprimer ou non un etudiant de la liste 
+
+
+
+
+
+
+
+
+\lstinputlisting[linerange=337-363]{../fonctions.c}
+
+\subsubsection{Explication de la Fonctions maximum}
+Cette fonction va chercher parmit tout les etudiant celui qui a la plus grande moyenne et a  la fin du programme il 
+donne sont nom prenom numero de dossier sa moyenne et le nom de la filiere.
+
+
+
+
+
+
+
+
+\lstinputlisting[linerange=365-391]{../fonctions.c}
+
+\subsubsection{Explication de la Fonctions minimum}
+Pareil pour la fonction \texttt{minimum} ,il donne l etudiant ayant la plus faible moyenne de la filiere .
+
+
+
+
+
+
+
+
+
+
+\lstinputlisting[linerange=393-447]{../fonctions.c}
+
+\subsubsection{Explication de la Fonctions du\_majorant\_minorant}
+Cette fonction Permet d afficher par ordre de merite tout les etudiant de la filiere du majorant a l etudiant ayant la plus faible moyenne
+grace a la \texttt{trie par selection}:
+\lstinputlisting[linerange=410-446]{../fonctions.c}
+
+
+
+
+
+
+
+
+
+\lstinputlisting[linerange=449-501]{../fonctions.c}
+
+\subsubsection{Explication de la Fonctions orde\_alphabet}
+Consernant cette fonction elle utilise une \texttt{trie a bulle}, et elle va permetre l affichage de la liste
+par ordre alphabetique :
+\lstinputlisting[linerange=467-500]{../fonctions.c}
+
+
+
+
+
+
+
+\section{Modélisation du corps de notre projet : (\texttt{int main})}
+C est ici que nous faisont les appelles des differentes fonctions pour donner vie a notre programme.
+
+\lstinputlisting[linerange=6-45]{../main.c}
+
+
+
+
+
 
 
 

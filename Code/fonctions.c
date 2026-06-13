@@ -34,7 +34,7 @@ Etudiant *inscrire_etudiants(Filiere *filiere)
         filiere->dernier_du_liste = nouveau_etudiant;
     } else 
     {
-        filiere->dernier_du_liste->etudiant_suivant = nouveau_etudiant; // si la liste est non vide le pointeur dernier_du_liste va pointe sure le nouveau etudiant
+        filiere->dernier_du_liste->etudiant_suivant = nouveau_etudiant; // le pointeur dernier_du_liste  pointe sure le nouveau etudiant
         filiere->dernier_du_liste = nouveau_etudiant; // Il devient le nouveau dernier de la filiere
     }
 
@@ -137,15 +137,15 @@ void bulletin(Filiere *filiere)
 
     printf("\n--------Bulletin des etudiants de la classe--------\n");
     
-    // VARIABLES AJOUTÉES POUR LA MOYENNE GÉNÉRALE (Ligne 1 et 2)
+    // VARIABLES AJOUTEES POUR LA MOYENNE GENERALE (Ligne 1 et 2)
     float somme_des_moyennes_classe = 0;
-    int compteur_etudiants_avec_notes = 0; // prend en compt que les etudiants ayant une moyenne 
+    int etudiants_avec_notes = 0; // prend en compte que les etudiants ayant une moyenne 
 
     Etudiant *actuel_liste_info = filiere->premier_du_liste;
     
     while (actuel_liste_info != NULL)
     {
-        // On vérifie le statut de chaque étudiant individuellement ici
+        // On verifie le statut de chaque etudiant individuellement ici
         if (actuel_liste_info->eta_inscription == 1)
         {
             printf("Nom: %s, Prenom: %s, Numero de dossier: %d\n", actuel_liste_info->nom, actuel_liste_info->prenom, actuel_liste_info->numero_dossier);
@@ -166,7 +166,7 @@ void bulletin(Filiere *filiere)
                 actuel_liste_info->moyenne_general = point_totale / coef_totale;
                 printf("Moyenne Generale: %.2f\n\n", actuel_liste_info->moyenne_general);
                 somme_des_moyennes_classe += actuel_liste_info->moyenne_general;
-                compteur_etudiants_avec_notes++;
+                etudiants_avec_notes++;
             }
             else
             {
@@ -179,14 +179,14 @@ void bulletin(Filiere *filiere)
     }
 
     // Affichage de la moyenne gennerale 
-    if (compteur_etudiants_avec_notes > 0)
+    if (etudiants_avec_notes != 0)
     {
-        float moyenne_general_classe = somme_des_moyennes_classe / compteur_etudiants_avec_notes;
+        float moyenne_general_classe = somme_des_moyennes_classe / etudiants_avec_notes;
         printf("MOYENNE GENERALE DE LA FILIERE : %.2f / 20\n", moyenne_general_classe);
     }
     else
     {
-        printf("Moyenne generale de la filiere : Impossible (aucune note saisie).\n");
+        printf("Les etudiants non pas de note.\n");
     }
 }
 // fonction pour rechercher un etudiant
@@ -197,6 +197,10 @@ void recherche_et_modification_etudiant(Filiere *filiere)
     {
         printf("Voulez vous rechercher ou modifier les info d un autre etudiant si oui taper 3 si non 0:\n");
         scanf("%d", &votre_choix);
+        if (votre_choix == 0)
+        {
+            break;
+        }
         if (filiere == NULL || filiere->premier_du_liste == NULL)
         {
             printf("Aucun etudiant dans la filiere.\n");
@@ -225,9 +229,7 @@ void recherche_et_modification_etudiant(Filiere *filiere)
             printf("2 Le Prenom\n");
             printf("3 Le Numero de dossier\n");
             printf("4 L etat d'inscription (1: inscrit, 0: Suspendu)\n");
-            printf("5 la note\n");
-            printf("6 le coef\n");
-            printf("7 la matiere\n");
+            printf("5 Matiere Note et Coef\n");
             printf("Votre choix : ");
             scanf("%d", &choix);
 
@@ -235,35 +237,31 @@ void recherche_et_modification_etudiant(Filiere *filiere)
             {
                 case 1:
                     printf("Entrez le nouveau nom :\n ");
-                    scanf("%s", etudiant_actuel->nom);
+                    scanf(" %s", etudiant_actuel->nom);
                     printf("Nom modifie avec succes !\n");
                     break;
                 case 2:
                     printf("Entrez le nouveau prenom :\n ");
-                    scanf("%s", etudiant_actuel->prenom);
+                    scanf(" %s", etudiant_actuel->prenom);
                     printf("Prenom modifie avec succes !\n");
                     break;
                 case 3:
                     printf("Entrez le nouveau numero de dossier :\n ");
-                    scanf("%d", &etudiant_actuel->numero_dossier);
+                    scanf(" %d", &etudiant_actuel->numero_dossier);
                     printf("Numero de dossier modifie avec succes !\n");
                     break;
                 case 4:
                     printf("Entrez le nouveau statut (1 pour Inscrit, 0 pour Non inscrit) :\n ");
-                    scanf("%d", &etudiant_actuel->eta_inscription);
+                    scanf(" %d", &etudiant_actuel->eta_inscription);
                     printf("Statut d'inscription mis a jour !\n");
                 case 5:
-                    printf("Entrez la nouvelle note :\n");
-                    scanf("%f", &etudiant_actuel->modules->valeur);
-                    printf("La note note a ete modifier avec succe !\n");
-                case 6:
-                    printf("Entrez la nouvelle coef:\n");
-                    scanf("%d", &etudiant_actuel->modules->coef);
-                    printf("Coeficient modifier avec succe !\n");
-                case 7:
                     printf("Entrez la nouvelle matiere :\n");
-                    scanf("%s", etudiant_actuel->modules->matier);
-                    printf("Matiere modifier avec succe !\n");
+                    scanf(" %s", &etudiant_actuel->modules->matier);
+                    printf("Entrez la nouvelle note :\n");
+                    scanf(" %f", &etudiant_actuel->modules->valeur);
+                    printf("Entrez le nouveau coef:\n");
+                    scanf(" %d", &etudiant_actuel->modules->coef);
+                    printf("La matiere ainsi que sa note et son coef on ete modifier avec succe !\n");
                     break;
                     default:
                     printf("Choix invalide. Aucune modification effectuee.\n");
@@ -281,7 +279,12 @@ void suprimer_etudiant(Filiere *filiere)
     while (votre_choix == 4)
     {
         printf("Si vous vouler supprimer une autre etudiant tape 4 sinon 0:\n");
-        scanf("%d", &votre_choix);
+        scanf(" %d", &votre_choix);
+        if (votre_choix == 0)
+        {
+            break;
+        }
+        
         if (filiere == NULL || filiere->premier_du_liste == NULL)
         {
             printf("Il n y a aucune etudiant ");
@@ -289,7 +292,7 @@ void suprimer_etudiant(Filiere *filiere)
         }
         int id_supprimer;
         printf("Donner le numero de dossier de l etudiant que vous souhaiter suprimer de la filiere:\n");
-        scanf("%d", &id_supprimer);
+        scanf(" %d", &id_supprimer);
         Etudiant *actuel_etudiant = filiere->premier_du_liste;
         Etudiant *precedent_etudiant = NULL;
         while (actuel_etudiant != NULL && id_supprimer != actuel_etudiant->numero_dossier)
@@ -301,31 +304,34 @@ void suprimer_etudiant(Filiere *filiere)
         {
             printf("Etudiant introuvable avec l id :%d\n",id_supprimer);
         }
-        if (precedent_etudiant == NULL)
-        {
-            // correspond au premier etudiant
-            filiere->premier_du_liste = actuel_etudiant->etudiant_suivant;
-            // cas ou la liste contien q un seul etudiant
-            if (filiere->premier_du_liste == NULL)
-            {
-                filiere->dernier_du_liste = NULL;
-            }
-        
-        }
         else
         {
-            // l etudiant est au milieux ou a la fin
-            precedent_etudiant->etudiant_suivant = actuel_etudiant->etudiant_suivant;
-            // Si on a supprimé le dernier, l'avant-dernier (precedent) devient le nouveau dernier
-            if (actuel_etudiant == filiere->dernier_du_liste) 
+            if (precedent_etudiant == NULL)
             {
-                filiere->dernier_du_liste = precedent_etudiant;
+                // correspond au premier etudiant
+                filiere->premier_du_liste = actuel_etudiant->etudiant_suivant;
+                // cas ou la liste contien q un seul etudiant
+                if (filiere->premier_du_liste == NULL)
+                {
+                    filiere->dernier_du_liste = NULL;
+                }
+        
             }
+            else
+            {
+                // l etudiant est au milieux ou a la fin
+                precedent_etudiant->etudiant_suivant = actuel_etudiant->etudiant_suivant;
+                // Si on a supprimé le dernier, l'avant-dernier (precedent) devient le nouveau dernier
+                if (actuel_etudiant == filiere->dernier_du_liste) 
+                {
+                    filiere->dernier_du_liste = precedent_etudiant;
+                }
+            }
+            free(actuel_etudiant); // liber l espace allouher a l etudiant suprimer
+            filiere->nb_etudiants--;
+            printf("L etudiant avec l id :%d a ete supprimer avec succe\n", id_supprimer);
         }
-        free(actuel_etudiant); // liber l espace allouher a l etudiant suprimer
-        filiere->nb_etudiants--;
-        printf("L etudiant avec l id :%d a ete supprimer avec succe\n", id_supprimer);
-    }
+    }    
 }
 // fonction pour trouver le majorant de la filiere
 void maximum(Filiere *filiere)
@@ -435,9 +441,9 @@ void du_majorant_minorant(Filiere *filiere)
             major_minor->eta_inscription = tmp_etat_inscription;
             major_minor->moyenne_general = tmp_moyenne_general;
             major_minor->modules = tmp_modules;
-        }
+        } 
         i = i->etudiant_suivant;
-    }    
+    }   
 }    
 // tri par ordre alphabetique (tri a bulle)
 void orde_alphabet(Filiere *filiere)
