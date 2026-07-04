@@ -4,12 +4,13 @@
             "type": "cppbuild",
             "label": "C/C++: gcc.exe générer le fichier actif",
             "command": "C:\\Strawberry\\c\\bin\\gcc.exe",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "${fileDirname}/*.c",
-                "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            "args": 
+            [
+               "-fdiagnostics-color=always",
+               "-g",
+               "${fileDirname}\\*.c",
+               "-o",
+               "${fileDirname}\\programme.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"

@@ -32,6 +32,8 @@ int main()
     bulletin(&ma_filiere);
     recherche_et_modification_etudiant(&ma_filiere);
     suprimer_etudiant(&ma_filiere);
+    printf("======== Bulletin apres modification! ========");
+    bulletin(&ma_filiere);
     maximum(&ma_filiere);
     minimum(&ma_filiere);
     du_majorant_minorant(&ma_filiere);

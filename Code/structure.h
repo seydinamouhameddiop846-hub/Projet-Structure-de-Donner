@@ -3,8 +3,8 @@
 // on cree une premier structure de type note
 typedef struct Note
 {
-    char matier[20]; // ici on donne la matiere
-    float valeur; // sa valeur
+    char matier[20]; 
+    float valeur; 
     int coef;
     struct Note *note_suivante; // permet de passer au note suivant du meme etudiant
 }Note;
@@ -16,7 +16,7 @@ typedef struct Etudiant
     int numero_dossier; // identifiant unique par etudiant 
     bool eta_inscription; // 1 si l etudiant s'est inscrit et 0 sinon (initialise lors de la creation)
     float moyenne_general; 
-    Note *modules; // est un pointeur de type Note 
+    Note *modules;
     struct Etudiant *etudiant_suivant; // permet de passer a l etudiant suivant
 }Etudiant;
 typedef struct
