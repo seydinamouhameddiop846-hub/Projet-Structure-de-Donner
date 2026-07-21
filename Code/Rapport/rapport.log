@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.6)  4 JUL 2026 13:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.6)  19 JUL 2026 17:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -131,6 +131,19 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+ (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+ (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+)
+\Gin@req@height=\dimen163
+\Gin@req@width=\dimen164
 ) (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
 ) (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
@@ -169,17 +182,46 @@ LaTeX Info: Redefining \degres on input line 23.
  (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count302
-\scratchdimen=\dimen163
+\scratchdimen=\dimen165
 \scratchbox=\box55
 \nofMPsegments=\count303
 \nofMParguments=\count304
 \everyMPshowfont=\toks22
 \MPscratchCnt=\count305
-\MPscratchDim=\dimen164
+\MPscratchDim=\dimen166
 \MPnumerator=\count306
 \makeMPintoPDFobject=\count307
 \everyMPtoPDFconversion=\toks23
+) (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+ (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+ (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)) (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+ (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+) (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)) (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
 )
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
+ (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -196,37 +238,88 @@ Overfull \hbox (10.42407pt too wide) in paragraph at lines 64--68
 \OT1/cmr/m/n/12 d'etu-diants. Dans la struc-ture \OT1/cmtt/m/n/12 Filiere \OT1/cmr/m/n/12 on a deux poin-teurs : \OT1/cmtt/m/n/12 premier[]du[]liste
  []
 
-[2] (../fonctions.c) [3] (../fonctions.c) (../fonctions.c [4] [5])
+[2] (../fonctions.c [3]) (../fonctions.c) (../fonctions.c [4]
+Overfull \hbox (33.19922pt too wide) in paragraph at lines 68--69
+[][][][] 
+ []
+
+[5])
 Overfull \hbox (11.92566pt too wide) in paragraph at lines 86--90
 \OT1/cmr/m/n/12 sui-vant  \OT1/cmtt/m/n/12 Note *nouveau[]note = (Note*)malloc(sizeof(Note))\OT1/cmr/m/n/12 .CEtte fonc-
  []
 
-(../fonctions.c) [6] (../fonctions.c [7]) (../fonctions.c [8]) (../fonctions.c) (../fonctions.c [9] [10])
+(../fonctions.c [6]) (../fonctions.c [7]) [8] (../fonctions.c) (../fonctions.c) (../fonctions.c [9]
+Overfull \hbox (26.89923pt too wide) in paragraph at lines 228--229
+[][][][] 
+ []
+
+[10])
 Overfull \hbox (13.98833pt too wide) in paragraph at lines 125--125
 []\OT1/cmr/bx/n/12 Explication de la Fonc-tions re-cherche[]et[]modification[]etudiant 
  []
 
-(../fonctions.c [11] [12]) (../fonctions.c [13]) (../fonctions.c [14]) (../fonctions.c [15]) (../fonctions.c [16]) (../fonctions.c [17] [18]) (../fonctions.c)
+[11] (../fonctions.c [12]) (../fonctions.c [13]) (../fonctions.c [14]) (../fonctions.c [15]) [16] (../fonctions.c [17]) (../fonctions.c [18]) (../fonctions.c [19])
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 203.
- [19] (../main.c) [20] [21] (rapport.aux)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 239.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 239.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 239.
+ [20]
+Overfull \hbox (38.01225pt too wide) in paragraph at lines 248--252
+[]\OT1/cmr/m/n/12 Cette fonc-tion d af-fi-chage ne com-porte qu une seule boucle \OT1/cmtt/m/n/12 while (actuel[]liste
+ []
+
+
+Overfull \hbox (64.40718pt too wide) in paragraph at lines 261--266
+[]\OT1/cmr/m/n/12 Dans cette fonc-tion nous avons une boucle im-brique : \OT1/cmtt/m/n/12 while (actuel[]liste[]bulletin
+ []
+
+
+Overfull \hbox (2.66193pt too wide) in paragraph at lines 273--273
+[]\OT1/cmr/bx/n/12 Complexite du Fonc-tions re-cherche[]et[]modification[]etudiant 
+ []
+
+
+Overfull \hbox (5.53334pt too wide) in paragraph at lines 274--281
+[]\OT1/cmr/m/n/12 La fonc-tion \OT1/cmtt/m/n/12 recherche[]et[]modification[]etudiant \OT1/cmr/m/n/12 com-porte deux boucle
+ []
+
+
+Overfull \hbox (59.71541pt too wide) in paragraph at lines 274--281
+\OT1/cmr/m/n/12 im-brique : \OT1/cmtt/m/n/12 while (etudiant[]actuel != NULL && etudiant[]actuel->numero[]dossier
+ []
+
+[21]
+Overfull \hbox (70.68608pt too wide) in paragraph at lines 362--375
+ [][] 
+ []
+
+<courbe.png, id=76, 451.6875pt x 236.885pt>
+File: courbe.png Graphic file (type png)
+<use courbe.png>
+Package pdftex.def Info: courbe.png  used on input line 385.
+(pdftex.def)             Requested size: 331.50238pt x 173.8644pt.
+[22] [23 <./courbe.png>] (rapport.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 5305 strings out of 467871
- 87541 string characters out of 5418861
- 913527 words of memory out of 5000000
- 34142 multiletter control sequences out of 15000+600000
- 630650 words of font info for 51 fonts, out of 8000000 for 9000
+ 6249 strings out of 467871
+ 104869 string characters out of 5418861
+ 912630 words of memory out of 5000000
+ 35031 multiletter control sequences out of 15000+600000
+ 633389 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,6n,62p,438b,1669s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on rapport.pdf (21 pages, 143486 bytes).
+ 59i,9n,67p,438b,1669s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on rapport.pdf (23 pages, 206163 bytes).
 PDF statistics:
- 100 PDF objects out of 1000 (max. 8388607)
+ 124 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

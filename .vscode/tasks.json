@@ -1,19 +1,21 @@
 {
+    "version": "2.0.0",
     "tasks": [
         {
             "type": "cppbuild",
             "label": "C/C++: gcc.exe générer le fichier actif",
             "command": "C:\\Strawberry\\c\\bin\\gcc.exe",
-            "args": 
-            [
-               "-fdiagnostics-color=always",
-               "-g",
-               "${fileDirname}\\*.c",
-               "-o",
-               "${fileDirname}\\programme.exe"
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${workspaceFolder}/Code/main.c",
+                "${workspaceFolder}/Code/fonctions.c",
+                "-I${workspaceFolder}/Code",
+                "-o",
+                "${workspaceFolder}/Code/main.exe"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "${workspaceFolder}/Code"
             },
             "problemMatcher": [
                 "$gcc"
@@ -22,8 +24,7 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Tâche générée par le débogueur."
+            "detail": "Compile main.c et fonctions.c ensemble pour corriger les undefined references"
         }
-    ],
-    "version": "2.0.0"
+    ]
 }

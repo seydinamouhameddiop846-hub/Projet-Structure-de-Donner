@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include<stdbool.h>
 // on cree une premier structure de type note

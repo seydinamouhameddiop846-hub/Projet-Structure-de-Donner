@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,10 +13,10 @@ Etudiant *inscrire_etudiants(Filiere *filiere)
     if (nouveau_etudiant == NULL)
     {
         printf("Ereure : impossible d allouer la memoire");
-        return;
+        return NULL;
     }
     // ajout des information d un etudiant par l utulisateur
-    printf("\n--------Formulaire d inscription--------\n");
+    printf("\n-------------------------------------Formulaire d inscription---------------------------------------------------- :\n");
     printf("Donner le nom de l etudiant : \n");
     scanf("%s", nouveau_etudiant->nom);
     printf("Donner le prenom de l etudiant : \n");
@@ -64,7 +65,7 @@ void note_etudiants(Etudiant *etudiant) // une fonction permetant d enregistrer 
     
     
         // ajout du resultat d un etudiant
-        printf("\n--------Resultats Academique--------\n");
+        printf("\n---------------------------------Resultats Academique--------------------------------------------------------S :\n");
         printf("Donner la matiere : \n");
         scanf("%s", nouveau_note->matier);
         do
@@ -118,7 +119,7 @@ void liste_de_la_classe(Filiere *filiere)
         return;
     }
 
-    printf("\n--------Liste des etudiants de la classe--------\n");
+    printf("\n---------------------------------Liste des etudiants de la classe------------------------------------------------ :\n");
     Etudiant *actuel_liste = filiere->premier_du_liste;
     while (actuel_liste != NULL) // affiche les identifient des etudiants
     {
@@ -135,7 +136,7 @@ void bulletin(Filiere *filiere)
         return;
     }
 
-    printf("\n--------Bulletin des etudiants de la classe--------\n");
+    printf("\n--------------------------------Bulletin des etudiants de la classe---------------------------------------------- :\n");
     
     float somme_des_moyennes_classe = 0;
     int etudiants_avec_notes = 0; // prend en compte que les etudiants ayant une moyenne 
@@ -224,14 +225,14 @@ void recherche_et_modification_etudiant(Filiere *filiere)
         }
         else
         {
-            printf("\n--------Etudiant trouver--------\n");
+            printf("\n-----------------------------------------Etudiant trouver--------------------------------------------------\n");
             printf("Nom: %s, Prenom: %s, Numero de dossier: %d, Etat d inscription:%s", etudiant_actuel->nom, etudiant_actuel->prenom, etudiant_actuel->numero_dossier, (etudiant_actuel->eta_inscription == 1) ? "Inscrit" : "Non inscrit");
-            printf("\n-------Que souhaitez-vous modifier--------\n");
-            printf("1 Le Nom\n");
-            printf("2 Le Prenom\n");
-            printf("3 Le Numero de dossier\n");
-            printf("4 L etat d'inscription (1: inscrit, 0: Suspendu)\n");
-            printf("5 Matiere Note et Coef\n");
+            printf("\n------------------------------------Que souhaitez-vous modifier--------------------------------------------\n");
+            printf("[1] Le Nom\n");
+            printf("[2] Le Prenom\n");
+            printf("[3] Le Numero de dossier\n");
+            printf("[4] L etat d'inscription (1: inscrit, 0: Suspendu)\n");
+            printf("[5] Matiere Note et Coef\n");
             printf("Votre choix : ");
             scanf("%d", &choix);
         }
@@ -303,16 +304,14 @@ void recherche_et_modification_etudiant(Filiere *filiere)
                 etudiant_actuel_modules->note_suivante->note_suivante = NULL;
             }
             break;
-            default:
-            printf("Choix invalide. Aucune modification effectuee.\n");
-            break;
-        }
-    }
-}
+        } 
+    }    
+}           
 // fonction pour suprimer un etudiant de la liste
 void suprimer_etudiant(Filiere *filiere)
 {
     int votre_choix = 4;
+    int id_supprimer;
     while (votre_choix == 4)
     {
         printf("Si vous vouler supprimer une autre etudiant tape 4 sinon 0:\n");
@@ -327,7 +326,6 @@ void suprimer_etudiant(Filiere *filiere)
             printf("Il n y a aucune etudiant ");
             return;
         }
-        int id_supprimer;
         printf("Donner le numero de dossier de l etudiant que vous souhaiter suprimer de la filiere:\n");
         scanf(" %d", &id_supprimer);
         Etudiant *actuel_etudiant = filiere->premier_du_liste;
@@ -445,41 +443,46 @@ void du_majorant_minorant(Filiere *filiere)
     Note *tmp_modules;
     while (i != NULL)
     {
-        major_minor = i; // on suppose que le plus grant est le i
-        j = i->etudiant_suivant;
-        while (j != NULL)
+        if (i->eta_inscription == 1)
         {
-            if (j->moyenne_general > major_minor->moyenne_general)
+            major_minor = i; // on suppose que le plus grant est le i
+            j = i->etudiant_suivant;
+            while (j != NULL)
             {
-                major_minor = j; // j devient temporairement le plus grand
+                if (j->moyenne_general > major_minor->moyenne_general)
+                {
+                    major_minor = j; // j devient temporairement le plus grand
+                }
+                j = j->etudiant_suivant; // j passe a l etudiant suivant
             }
-            j = j->etudiant_suivant; // j passe a l etudiant suivant
-        }
-        if (major_minor != i)
-        {
-            strcpy(tmp_nom, i->nom);
-            strcpy(tmp_prenom, i->prenom);
-            tmp_id = i->numero_dossier;
-            tmp_etat_inscription = i->eta_inscription;
-            tmp_moyenne_general = i->moyenne_general;
-            tmp_modules = i->modules;
+            if (major_minor != i)
+            {
+                strcpy(tmp_nom, i->nom);
+                strcpy(tmp_prenom, i->prenom);
+                tmp_id = i->numero_dossier;
+                tmp_etat_inscription = i->eta_inscription;
+                tmp_moyenne_general = i->moyenne_general;
+                tmp_modules = i->modules;
 
-            strcpy(i->nom, major_minor->nom);
-            strcpy(i->prenom, major_minor->prenom);
-            i->numero_dossier = major_minor->numero_dossier;
-            i->eta_inscription = major_minor->eta_inscription;
-            i->moyenne_general = major_minor->moyenne_general;
-            i->modules = major_minor->modules;
+                strcpy(i->nom, major_minor->nom);
+                strcpy(i->prenom, major_minor->prenom);
+                i->numero_dossier = major_minor->numero_dossier;
+                i->eta_inscription = major_minor->eta_inscription;
+                i->moyenne_general = major_minor->moyenne_general;
+                i->modules = major_minor->modules;
 
-            strcpy(major_minor->nom, tmp_nom);
-            strcpy(major_minor->prenom, tmp_prenom);
-            major_minor->numero_dossier = tmp_id;
-            major_minor->eta_inscription = tmp_etat_inscription;
-            major_minor->moyenne_general = tmp_moyenne_general;
-            major_minor->modules = tmp_modules;
-        } 
-        i = i->etudiant_suivant;
-    }   
+                strcpy(major_minor->nom, tmp_nom);
+                strcpy(major_minor->prenom, tmp_prenom);
+                major_minor->numero_dossier = tmp_id;
+                major_minor->eta_inscription = tmp_etat_inscription;
+                major_minor->moyenne_general = tmp_moyenne_general;
+                major_minor->modules = tmp_modules;
+            } 
+            i = i->etudiant_suivant;
+        }   
+    }
+        
+        
 }    
 // tri par ordre alphabetique (tri a bulle)
 void orde_alphabet(Filiere *filiere)
@@ -502,37 +505,42 @@ void orde_alphabet(Filiere *filiere)
 
     while (i != NULL)
     {
-        j = i->etudiant_suivant;
-        
-        while (j != NULL)
+        if (i->eta_inscription == 1)
         {
-            if (strcmp(i->nom, j->nom) > 0)
-            {
-                strcpy(tmp_nom, i->nom);
-                strcpy(tmp_prenom, i->prenom);
-                tmp_id = i->numero_dossier;
-                tmp_etat_inscription = i->eta_inscription;
-                tmp_moyenne_general = i->moyenne_general;
-                tmp_modules = i->modules;
-
-                strcpy(i->nom, j->nom);
-                strcpy(i->prenom, j->prenom);
-                i->numero_dossier = j->numero_dossier;
-                i->eta_inscription = j->eta_inscription;
-                i->moyenne_general = j->moyenne_general;
-                i->modules = j->modules;
-
-                strcpy(j->nom, tmp_nom);
-                strcpy(j->prenom, tmp_prenom);
-                j->numero_dossier = tmp_id;
-                j->eta_inscription = tmp_etat_inscription;
-                j->moyenne_general = tmp_moyenne_general;
-                j->modules = tmp_modules;
-            }
-            j = j->etudiant_suivant; // j avance
-        }
+            j = i->etudiant_suivant;
         
-        i = i->etudiant_suivant; // i avance
+            while (j != NULL)
+            {
+                if (strcmp(i->nom, j->nom) > 0)
+                {
+                    strcpy(tmp_nom, i->nom);
+                    strcpy(tmp_prenom, i->prenom);
+                    tmp_id = i->numero_dossier;
+                    tmp_etat_inscription = i->eta_inscription;
+                    tmp_moyenne_general = i->moyenne_general;
+                    tmp_modules = i->modules;
+
+                    strcpy(i->nom, j->nom);
+                    strcpy(i->prenom, j->prenom);
+                    i->numero_dossier = j->numero_dossier;
+                    i->eta_inscription = j->eta_inscription;
+                    i->moyenne_general = j->moyenne_general;
+                    i->modules = j->modules;
+
+                    strcpy(j->nom, tmp_nom);
+                    strcpy(j->prenom, tmp_prenom);
+                    j->numero_dossier = tmp_id;
+                    j->eta_inscription = tmp_etat_inscription;
+                    j->moyenne_general = tmp_moyenne_general;
+                    j->modules = tmp_modules;
+                }
+                j = j->etudiant_suivant; // j avance
+            }
+        
+            i = i->etudiant_suivant; // i avance
+        }
     }
+        
+        
 }
 
