@@ -142,26 +142,20 @@ int main()
                     strcpy(nouveau_etudiant->nom, "Diop");
                     strcpy(nouveau_etudiant->prenom, "Mohamed");
                     nouveau_etudiant->numero_dossier = i;
-
-                    if (n / 20 != 0)
-                    {
-                        nouveau_etudiant->moyenne_general = (float)(n - i) / (n / 20.0);
-                    } 
-                    else
-                    {
-                        nouveau_etudiant->moyenne_general = 10.0;
-                    }
+                    nouveau_etudiant->eta_inscription = 1;
+                    
+                    nouveau_etudiant->moyenne_general = (float)(n - i) / (n / 20.0);
         
                     nouveau_etudiant->etudiant_suivant = NULL;
                     if (ma_filiere_temps.premier_du_liste == NULL)
                     {
-                        ma_filiere_temps.dernier_du_liste = nouveau_etudiant;
+                        ma_filiere_temps.premier_du_liste = nouveau_etudiant;
                         ma_filiere_temps.dernier_du_liste = nouveau_etudiant;
                     }
                     else
                     {
                         ma_filiere_temps.dernier_du_liste->etudiant_suivant = nouveau_etudiant;
-                       ma_filiere_temps.dernier_du_liste = nouveau_etudiant;
+                        ma_filiere_temps.dernier_du_liste = nouveau_etudiant;
                     }
                     ma_filiere_temps.nb_etudiants++;
         
@@ -201,6 +195,7 @@ int main()
                     sprintf(nouveau_etudiant->prenom, "Mohamed%d", i);
                     nouveau_etudiant->numero_dossier = i;
                     nouveau_etudiant->moyenne_general = 12;
+                    nouveau_etudiant->eta_inscription = 1;
         
                     nouveau_etudiant->etudiant_suivant = NULL;
                     if (ma_filiere_temps.premier_du_liste == NULL)
